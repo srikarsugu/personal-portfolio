@@ -1663,16 +1663,16 @@
                 <p style="font-size: 1.2rem; margin-bottom: 1rem;">📞 <strong>+91 8019404529</strong></p>
                 <p style="font-size: 1.2rem; margin-bottom: 1rem;">📧 <strong>srikarsugu2003@gmail.com</strong></p>
             </div>
-            <form class="contact-form">
+            <form class="contact-form" id="contact-form">
                 <fieldset class="contact-fieldset">
                     <legend class="contact-legend">Send me a message</legend>
                     <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        <label for="from_name">Full Name</label>
+                        <input type="text" id="from_name" name="from_name" placeholder="Enter your full name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                        <label for="reply_to">Email Address</label>
+                        <input type="email" id="reply_to" name="reply_to" placeholder="your.email@example.com" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Your Message</label>
@@ -1765,9 +1765,11 @@
         const contactForm = document.querySelector('.contact-form');
         const formStatus = document.querySelector('.form-status');
         const submitButton = document.querySelector('.submit-btn');
-        const EMAILJS_PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY';
-        const EMAILJS_SERVICE_ID = 'YOUR_EMAILJS_SERVICE_ID';
-        const EMAILJS_TEMPLATE_ID = 'YOUR_EMAILJS_TEMPLATE_ID';
+        
+        // Replace these with your actual EmailJS credentials
+        const EMAILJS_PUBLIC_KEY = '4RGwdICZuRJ7uFRF8'; // Get this from EmailJS dashboard
+        const EMAILJS_SERVICE_ID = 'srikar_8019'; // Your service ID
+        const EMAILJS_TEMPLATE_ID = 'template_9r5ltua'; // Your template ID
 
         function updateFormStatus(message, statusClass) {
             if (!formStatus) return;
@@ -1802,7 +1804,7 @@
                 }
 
                 if (!emailConfigIsValid()) {
-                    updateFormStatus('Email service is not configured. Please add your EmailJS keys in the script.', 'is-error');
+                    updateFormStatus('Email service is not configured. Please add your EmailJS credentials.', 'is-error');
                     return;
                 }
 
@@ -1810,12 +1812,20 @@
                 toggleSubmitState(true);
 
                 try {
-                    await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm);
-                    updateFormStatus('Thanks! Your message was sent successfully.', 'is-success');
+                    // Send email using EmailJS
+                    const result = await emailjs.sendForm(
+                        EMAILJS_SERVICE_ID,
+                        EMAILJS_TEMPLATE_ID,
+                        contactForm,
+                        EMAILJS_PUBLIC_KEY
+                    );
+                    
+                    console.log('Email sent successfully:', result);
+                    updateFormStatus('Thanks! Your message was sent successfully. I\'ll get back to you soon.', 'is-success');
                     contactForm.reset();
                 } catch (error) {
                     console.error('EmailJS error:', error);
-                    updateFormStatus('Oops! Something went wrong. Please try again later.', 'is-error');
+                    updateFormStatus('Oops! Something went wrong. Please try again later or contact me directly.', 'is-error');
                 } finally {
                     toggleSubmitState(false);
                 }
@@ -1847,12 +1857,24 @@
             });
         }, observerOptions);
 
-        // Observe all sections for animation
+        // Initialize EmailJS when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            if (typeof emailjs !== 'undefined' && emailConfigIsValid()) {
-                emailjs.init(EMAILJS_PUBLIC_KEY);
-            } else if (formStatus && !emailConfigIsValid()) {
-                updateFormStatus('Configure EmailJS keys in the script to enable email delivery.', '');
+            // Initialize EmailJS
+            if (typeof emailjs !== 'undefined') {
+                if (emailConfigIsValid()) {
+                    emailjs.init(EMAILJS_PUBLIC_KEY);
+                    console.log('EmailJS initialized successfully');
+                } else {
+                    console.warn('EmailJS credentials not configured');
+                    if (formStatus) {
+                        updateFormStatus('Please configure your EmailJS credentials to enable email functionality.', 'is-error');
+                    }
+                }
+            } else {
+                console.error('EmailJS library not loaded');
+                if (formStatus) {
+                    updateFormStatus('Email service unavailable. Please try again later.', 'is-error');
+                }
             }
 
             const sections = document.querySelectorAll('section');
