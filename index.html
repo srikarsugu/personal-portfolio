@@ -1278,6 +1278,24 @@
                 font-size: 1.05rem;
             }
 
+            /* Responsive Typing Animation */
+            .animated-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+                line-height: 1.4;
+            }
+
+            .typing-text {
+                display: inline;
+                white-space: normal;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+
+            .cursor {
+                height: 1.1em;
+            }
+
             section {
                 padding: 3rem 1.2rem;
             }
@@ -1303,6 +1321,69 @@
             .experience-meta,
             .info-meta {
                 width: 100%;
+            }
+        }
+
+        /* Tablet Responsive Styles */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .animated-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 1.8rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        /* Small Mobile Responsive Styles */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 4rem 1rem;
+                padding-top: 7rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .animated-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.2rem;
+                line-height: 1.5;
+                padding: 0 0.5rem;
+            }
+
+            .typing-text {
+                font-size: inherit;
+            }
+
+            .cursor {
+                width: 1.5px;
+                height: 1em;
+            }
+
+            .hero div[style*="margin: 1rem 0"] {
+                margin: 0.8rem 0 !important;
+                font-size: 1rem !important;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Large Screen Optimization */
+        @media (min-width: 1440px) {
+            .animated-subtitle {
+                font-size: 1.4rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
             }
         }
 
@@ -1930,19 +2011,30 @@
             element.innerHTML = ''; // Also clear any HTML content
             let i = 0;
 
+            // Responsive typing speed based on screen size
+            function getBaseSpeed() {
+                if (window.innerWidth <= 480) {
+                    return 120; // Slightly slower on small screens for readability
+                } else if (window.innerWidth <= 768) {
+                    return 100; // Standard speed on mobile
+                } else {
+                    return 80; // Faster on desktop
+                }
+            }
+
             function type() {
                 if (i < text.length) {
                     element.textContent += text.charAt(i);
                     i++;
                     
                     // Variable typing speed - faster for spaces, slower for special characters
-                    let speed = 100; // base speed
+                    let speed = getBaseSpeed(); // responsive base speed
                     if (text.charAt(i - 1) === ' ') {
-                        speed = 50; // faster for spaces
+                        speed = speed * 0.5; // faster for spaces
                     } else if (text.charAt(i - 1) === '|') {
-                        speed = 200; // pause at separators
+                        speed = speed * 2; // pause at separators
                     } else if (Math.random() < 0.1) {
-                        speed = 200; // random hesitation
+                        speed = speed * 2; // random hesitation
                     }
                     
                     setTimeout(type, speed);
@@ -1956,8 +2048,9 @@
                 }
             }
 
-            // Start typing after a delay
-            setTimeout(type, 2000);
+            // Start typing after a delay (responsive delay)
+            const startDelay = window.innerWidth <= 480 ? 1500 : 2000;
+            setTimeout(type, startDelay);
         }
 
         // Initialize EmailJS when DOM is loaded
