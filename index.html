@@ -478,6 +478,59 @@
             }
         }
 
+        /* Typing Animation Styles */
+        .animated-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: slideInFromRight 1s ease-out 0.3s both;
+            position: relative;
+            z-index: 1;
+            min-height: 2rem;
+        }
+
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .cursor {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.9);
+            animation: blink 0.8s infinite;
+            width: 2px;
+            margin-left: 2px;
+            height: 1.2em;
+        }
+
+        @keyframes blink {
+            0%, 45% {
+                opacity: 1;
+            }
+            46%, 100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes colorShift {
+            0%, 100% {
+                color: rgba(255, 255, 255, 0.95);
+            }
+            25% {
+                color: #FFD93D;
+            }
+            50% {
+                color: #4ECDC4;
+            }
+            75% {
+                color: #FF6B6B;
+            }
+        }
+
+        .typing-complete {
+            animation: colorShift 6s ease-in-out infinite;
+        }
+
         .cta-button {
             display: inline-block;
             background: linear-gradient(45deg, #FFD93D, #FF6B6B, #4ECDC4);
@@ -1404,7 +1457,10 @@
     <main>
         <section id="home" class="hero">
             <h1>Suggu Srikar</h1>
-            <p>Full Stack Developer | Java & React Specialist | AI Enthusiast</p>
+            <p class="animated-subtitle">
+                <span id="typewriter" class="typing-text"></span>
+                <span class="cursor">|</span>
+            </p>
             <div style="margin: 1rem 0; font-size: 1.1rem;">
                 <p>📞 +91 8019404529 | 📧 srikarsugu2003@gmail.com</p>
             </div>
@@ -1857,8 +1913,60 @@
             });
         }, observerOptions);
 
+        // Realistic Typewriter Effect
+        function typeWriter() {
+            const text = "Full Stack Developer | Java & React Specialist | Automation Tester";
+            const element = document.getElementById('typewriter');
+            const cursor = document.querySelector('.cursor');
+            
+            if (!element) {
+                console.error('Typewriter element not found!');
+                return;
+            }
+            
+            console.log('Starting typewriter effect...');
+            // Make sure element starts empty
+            element.textContent = '';
+            element.innerHTML = ''; // Also clear any HTML content
+            let i = 0;
+
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    
+                    // Variable typing speed - faster for spaces, slower for special characters
+                    let speed = 100; // base speed
+                    if (text.charAt(i - 1) === ' ') {
+                        speed = 50; // faster for spaces
+                    } else if (text.charAt(i - 1) === '|') {
+                        speed = 200; // pause at separators
+                    } else if (Math.random() < 0.1) {
+                        speed = 200; // random hesitation
+                    }
+                    
+                    setTimeout(type, speed);
+                } else {
+                    // Typing complete - start color animation
+                    console.log('Typing complete!');
+                    setTimeout(() => {
+                        element.classList.add('typing-complete');
+                        if (cursor) cursor.style.opacity = '0';
+                    }, 1000);
+                }
+            }
+
+            // Start typing after a delay
+            setTimeout(type, 2000);
+        }
+
         // Initialize EmailJS when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
+            // Start typewriter effect
+            setTimeout(() => {
+                typeWriter();
+            }, 500); // Small delay to ensure DOM is fully ready
+            
             // Initialize EmailJS
             if (typeof emailjs !== 'undefined') {
                 if (emailConfigIsValid()) {
