@@ -20,9 +20,9 @@
             overflow-x: hidden;
             min-height: 100vh;
             background: radial-gradient(circle at 10% 20%, rgba(102, 126, 234, 0.25), transparent 40%),
-                        radial-gradient(circle at 90% 10%, rgba(118, 75, 162, 0.3), transparent 45%),
-                        radial-gradient(circle at 50% 80%, rgba(73, 182, 255, 0.25), transparent 50%),
-                        linear-gradient(120deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #45b7d1 75%, #4ecdc4 100%);
+                radial-gradient(circle at 90% 10%, rgba(118, 75, 162, 0.3), transparent 45%),
+                radial-gradient(circle at 50% 80%, rgba(73, 182, 255, 0.25), transparent 50%),
+                linear-gradient(120deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #45b7d1 75%, #4ecdc4 100%);
             background-size: 180% 180%;
             animation: backgroundDrift 30s ease infinite;
             position: relative;
@@ -37,7 +37,7 @@
             position: fixed;
             inset: 0;
             background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.08) 0%, transparent 55%);
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.08) 0%, transparent 55%);
             mix-blend-mode: screen;
             animation: morphBackground 18s ease-in-out infinite;
             pointer-events: none;
@@ -56,16 +56,27 @@
         }
 
         @keyframes backgroundDrift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         @keyframes morphBackground {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
                 opacity: 0.9;
             }
+
             50% {
                 transform: scale(1.1) rotate(10deg);
                 opacity: 1;
@@ -73,11 +84,25 @@
         }
 
         @keyframes grainShift {
-            0% { transform: translate3d(0, 0, 0); }
-            25% { transform: translate3d(-5%, -5%, 0); }
-            50% { transform: translate3d(5%, -2%, 0); }
-            75% { transform: translate3d(-3%, 3%, 0); }
-            100% { transform: translate3d(0, 0, 0); }
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            25% {
+                transform: translate3d(-5%, -5%, 0);
+            }
+
+            50% {
+                transform: translate3d(5%, -2%, 0);
+            }
+
+            75% {
+                transform: translate3d(-3%, 3%, 0);
+            }
+
+            100% {
+                transform: translate3d(0, 0, 0);
+            }
         }
 
         /* Header Styles */
@@ -175,7 +200,7 @@
             transition: transform 0.35s ease, opacity 0.35s ease, background 0.3s ease;
         }
 
-        .nav-toggle span + span {
+        .nav-toggle span+span {
             margin-top: 0.35rem;
         }
 
@@ -216,14 +241,27 @@
         }
 
         @keyframes logoGlow {
-            from { filter: drop-shadow(0 0 14px rgba(124, 58, 237, 0.45)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25)); }
-            to { filter: drop-shadow(0 0 28px rgba(56, 189, 248, 0.6)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25)); }
+            from {
+                filter: drop-shadow(0 0 14px rgba(124, 58, 237, 0.45)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+            }
+
+            to {
+                filter: drop-shadow(0 0 28px rgba(56, 189, 248, 0.6)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+            }
         }
 
         @keyframes navGlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         nav ul {
@@ -403,7 +441,7 @@
             font-size: 3.5rem;
             margin-bottom: 1rem;
             animation: slideInFromLeft 1s ease-out;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             position: relative;
             z-index: 1;
         }
@@ -421,6 +459,7 @@
                 opacity: 0;
                 transform: translateX(-100px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -432,6 +471,7 @@
                 opacity: 0;
                 transform: translateX(100px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -477,9 +517,17 @@
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         @keyframes bounceIn {
@@ -487,11 +535,16 @@
                 opacity: 0;
                 transform: scale(0.3) translateY(50px);
             }
+
             50% {
                 opacity: 1;
                 transform: scale(1.05) translateY(-10px);
             }
-            70% { transform: scale(0.9) translateY(0); }
+
+            70% {
+                transform: scale(0.9) translateY(0);
+            }
+
             100% {
                 opacity: 1;
                 transform: scale(1) translateY(0);
@@ -516,8 +569,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* Skills Section */
@@ -554,9 +614,17 @@
         }
 
         @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .skill-card:hover {
@@ -813,6 +881,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -867,6 +936,7 @@
                 opacity: 0;
                 transform: scale(0.8);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -952,7 +1022,7 @@
         .form-group textarea:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 
+            box-shadow:
                 0 0 0 3px rgba(102, 126, 234, 0.2),
                 0 5px 15px rgba(102, 126, 234, 0.1);
             transform: translateY(-2px);
@@ -1061,6 +1131,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1195,8 +1266,13 @@
         }
 
         @keyframes titleGlow {
-            from { filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.4)); }
-            to { filter: drop-shadow(0 0 20px rgba(118, 75, 162, 0.6)); }
+            from {
+                filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.4));
+            }
+
+            to {
+                filter: drop-shadow(0 0 20px rgba(118, 75, 162, 0.6));
+            }
         }
 
         h2::after {
@@ -1222,8 +1298,13 @@
         }
 
         @keyframes expandLine {
-            from { width: 0; }
-            to { width: 60px; }
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 60px;
+            }
         }
 
         h3 {
@@ -1258,6 +1339,26 @@
             font-weight: 600;
         }
 
+        .form-status {
+            margin-top: 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1f2937;
+            min-height: 1.2rem;
+        }
+
+        .form-status.is-sending {
+            color: #2563eb;
+        }
+
+        .form-status.is-success {
+            color: #047857;
+        }
+
+        .form-status.is-error {
+            color: #b91c1c;
+        }
+
         /* Add subtle animations to sections */
         section {
             animation: sectionSlideIn 0.8s ease-out;
@@ -1268,6 +1369,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1312,11 +1414,16 @@
         <section id="about" class="about">
             <h2>About Me</h2>
             <article>
-                <p>Hello! I'm Suggu Srikar, a passionate Full Stack Developer with a Bachelor's degree in Information Technology from GMRIT (CGPA: 7.03). I specialize in creating innovative web solutions using modern technologies like Java, React, and JavaScript.</p>
+                <p>Hello! I'm Suggu Srikar, a passionate Full Stack Developer with a Bachelor's degree in Information
+                    Technology from GMRIT (CGPA: 7.03). I specialize in creating innovative web solutions using modern
+                    technologies like Java, React, and JavaScript.</p>
                 <br>
-                <p>With hands-on experience in full stack development and a patent in AI-enhanced accessibility technology, I'm committed to building applications that make a real difference. My expertise spans from frontend UI/UX design to backend development and database management.</p>
+                <p>With hands-on experience in full stack development and a patent in AI-enhanced accessibility
+                    technology, I'm committed to building applications that make a real difference. My expertise spans
+                    from frontend UI/UX design to backend development and database management.</p>
                 <br>
-                <p>I've completed internships, led successful events, and developed cutting-edge projects including AI-powered accessibility tools and machine learning applications.</p>
+                <p>I've completed internships, led successful events, and developed cutting-edge projects including
+                    AI-powered accessibility tools and machine learning applications.</p>
             </article>
         </section>
 
@@ -1333,7 +1440,9 @@
                             <span>🎓 Bachelor's in Information Technology</span>
                             <span>CGPA 7.03</span>
                         </div>
-                        <p style="margin-top: 1.25rem;">Built a strong foundation in full-stack development, data structures, and emerging technologies while collaborating on innovation-focused academic projects.</p>
+                        <p style="margin-top: 1.25rem;">Built a strong foundation in full-stack development, data
+                            structures, and emerging technologies while collaborating on innovation-focused academic
+                            projects.</p>
                     </div>
                 </article>
                 <article class="education-item">
@@ -1346,7 +1455,9 @@
                             <span>📘 Intermediate (MPC)</span>
                             <span>CGPA 7.15</span>
                         </div>
-                        <p style="margin-top: 1.25rem;">Cultivated analytical and problem-solving skills through intensive coursework in mathematics and physics, setting the stage for engineering studies.</p>
+                        <p style="margin-top: 1.25rem;">Cultivated analytical and problem-solving skills through
+                            intensive coursework in mathematics and physics, setting the stage for engineering studies.
+                        </p>
                     </div>
                 </article>
                 <article class="education-item">
@@ -1359,7 +1470,8 @@
                             <span>🏅 Secondary Education</span>
                             <span>CGPA 8.7</span>
                         </div>
-                        <p style="margin-top: 1.25rem;">Graduated with distinction while taking part in science fairs and leadership clubs that sparked an interest in technology-driven problem solving.</p>
+                        <p style="margin-top: 1.25rem;">Graduated with distinction while taking part in science fairs
+                            and leadership clubs that sparked an interest in technology-driven problem solving.</p>
                     </div>
                 </article>
             </div>
@@ -1367,7 +1479,8 @@
 
         <section id="skills">
             <h2>Skills</h2>
-            <p class="section-intro">A balanced mix of engineering depth, testing discipline, and creative collaboration that helps me ship experiences users love.</p>
+            <p class="section-intro">A balanced mix of engineering depth, testing discipline, and creative collaboration
+                that helps me ship experiences users love.</p>
             <div class="skills-showcase">
                 <article class="skills-category">
                     <h3>Programming Languages</h3>
@@ -1428,12 +1541,19 @@
                             <span>CI/CD Pipelines</span>
                         </div>
                     </div>
-                    <p style="margin-bottom: 1.5rem; color: rgba(31, 41, 55, 0.85);">Bridging quality engineering and development to deliver reliable, user-ready releases across large-scale web products.</p>
+                    <p style="margin-bottom: 1.5rem; color: rgba(31, 41, 55, 0.85);">Bridging quality engineering and
+                        development to deliver reliable, user-ready releases across large-scale web products.</p>
                     <ul class="highlight-list">
-                        <li><span class="highlight-icon"></span><span>Engineer robust manual and automated test suites for web platforms using Selenium, TestNG, JUnit, and Cucumber.</span></li>
-                        <li><span class="highlight-icon"></span><span>Validate RESTful services with Rest Assured, Postman, and SoapUI to guarantee dependable API behavior before release.</span></li>
-                        <li><span class="highlight-icon"></span><span>Author detailed test cases, execute regression passes, and track defects end-to-end with Jira while integrating Git and Jenkins for smooth CI/CD.</span></li>
-                        <li><span class="highlight-icon"></span><span>Champion SDLC, STLC, and Agile best practices, contributing to sprint planning, daily stand-ups, and continuous delivery cadences.</span></li>
+                        <li><span class="highlight-icon"></span><span>Engineer robust manual and automated test suites
+                                for web platforms using Selenium, TestNG, JUnit, and Cucumber.</span></li>
+                        <li><span class="highlight-icon"></span><span>Validate RESTful services with Rest Assured,
+                                Postman, and SoapUI to guarantee dependable API behavior before release.</span></li>
+                        <li><span class="highlight-icon"></span><span>Author detailed test cases, execute regression
+                                passes, and track defects end-to-end with Jira while integrating Git and Jenkins for
+                                smooth CI/CD.</span></li>
+                        <li><span class="highlight-icon"></span><span>Champion SDLC, STLC, and Agile best practices,
+                                contributing to sprint planning, daily stand-ups, and continuous delivery
+                                cadences.</span></li>
                     </ul>
                 </div>
             </article>
@@ -1448,10 +1568,13 @@
                         <span>500+ Participants</span>
                         <span>Budget Exceeded by 20%</span>
                     </div>
-                    <p>Directed financial planning and execution for Stepcone-2023, ensuring every rupee delivered measurable value for attendees and sponsors alike.</p>
+                    <p>Directed financial planning and execution for Stepcone-2023, ensuring every rupee delivered
+                        measurable value for attendees and sponsors alike.</p>
                     <ul class="highlight-list" style="margin-top: 1.25rem;">
-                        <li><span class="highlight-icon"></span><span>Balanced vendor negotiations, sponsorships, and logistics to unlock extended programming.</span></li>
-                        <li><span class="highlight-icon"></span><span>Coordinated a cross-functional student team to keep operations on track before and during the fest.</span></li>
+                        <li><span class="highlight-icon"></span><span>Balanced vendor negotiations, sponsorships, and
+                                logistics to unlock extended programming.</span></li>
+                        <li><span class="highlight-icon"></span><span>Coordinated a cross-functional student team to
+                                keep operations on track before and during the fest.</span></li>
                     </ul>
                 </div>
             </article>
@@ -1463,36 +1586,50 @@
                 <article class="project-card">
                     <div class="project-image">🏆 Patent Project</div>
                     <div class="project-content">
-                        <span class="accent-badge" style="margin-bottom: 1rem; display: inline-flex;">Accessibility · AI</span>
+                        <span class="accent-badge" style="margin-bottom: 1rem; display: inline-flex;">Accessibility ·
+                            AI</span>
                         <h3>AI-Enhanced Morse Code Translation</h3>
-                        <p style="color: rgba(31, 41, 55, 0.85);">Transforms eye-tracking input into Morse signals that become spoken or written language, enabling real-time conversations for non-verbal users.</p>
+                        <p style="color: rgba(31, 41, 55, 0.85);">Transforms eye-tracking input into Morse signals that
+                            become spoken or written language, enabling real-time conversations for non-verbal users.
+                        </p>
                         <ul class="highlight-list" style="margin-top: 1.25rem;">
-                            <li><span class="highlight-icon"></span><span>Integrates custom computer-vision tracking with intelligent Morse decoding pipelines.</span></li>
-                            <li><span class="highlight-icon"></span><span>Filed as <strong>Patent GMRITCRN026</strong> with Sanshadow for inclusive assistive tech innovation.</span></li>
+                            <li><span class="highlight-icon"></span><span>Integrates custom computer-vision tracking
+                                    with intelligent Morse decoding pipelines.</span></li>
+                            <li><span class="highlight-icon"></span><span>Filed as <strong>Patent GMRITCRN026</strong>
+                                    with Sanshadow for inclusive assistive tech innovation.</span></li>
                         </ul>
                     </div>
                 </article>
                 <article class="project-card">
                     <div class="project-image">🏠 ML Project</div>
                     <div class="project-content">
-                        <span class="accent-badge" style="margin-bottom: 1rem; display: inline-flex;">Data Science</span>
+                        <span class="accent-badge" style="margin-bottom: 1rem; display: inline-flex;">Data
+                            Science</span>
                         <h3>Airbnb Price Prediction</h3>
-                        <p style="color: rgba(31, 41, 55, 0.85);">Predicts competitive nightly rates for Airbnb listings by learning from location signals, amenities, seasonality, and past performance.</p>
+                        <p style="color: rgba(31, 41, 55, 0.85);">Predicts competitive nightly rates for Airbnb listings
+                            by learning from location signals, amenities, seasonality, and past performance.</p>
                         <ul class="highlight-list" style="margin-top: 1.25rem;">
-                            <li><span class="highlight-icon"></span><span>Engineered feature pipelines for geospatial data, host metrics, and calendar trends.</span></li>
-                            <li><span class="highlight-icon"></span><span>Evaluated multiple regression models to surface actionable pricing recommendations.</span></li>
+                            <li><span class="highlight-icon"></span><span>Engineered feature pipelines for geospatial
+                                    data, host metrics, and calendar trends.</span></li>
+                            <li><span class="highlight-icon"></span><span>Evaluated multiple regression models to
+                                    surface actionable pricing recommendations.</span></li>
                         </ul>
                     </div>
                 </article>
                 <article class="project-card">
                     <div class="project-image">� Web App</div>
                     <div class="project-content">
-                        <span class="accent-badge" style="margin-bottom: 1rem; display: inline-flex;">QA Engineering</span>
+                        <span class="accent-badge" style="margin-bottom: 1rem; display: inline-flex;">QA
+                            Engineering</span>
                         <h3>Magento Web App Automation Suite</h3>
-                        <p style="color: rgba(31, 41, 55, 0.85);">Built a resilient automation framework with Selenium, Cucumber (BDD), and TestNG to accelerate regression coverage for critical commerce flows.</p>
+                        <p style="color: rgba(31, 41, 55, 0.85);">Built a resilient automation framework with Selenium,
+                            Cucumber (BDD), and TestNG to accelerate regression coverage for critical commerce flows.
+                        </p>
                         <ul class="highlight-list" style="margin-top: 1.25rem;">
-                            <li><span class="highlight-icon"></span><span>Implemented Page Factory design for reusable UI components and faster maintenance.</span></li>
-                            <li><span class="highlight-icon"></span><span>Integrated rich reporting and Jenkins pipelines for hands-free nightly validation.</span></li>
+                            <li><span class="highlight-icon"></span><span>Implemented Page Factory design for reusable
+                                    UI components and faster maintenance.</span></li>
+                            <li><span class="highlight-icon"></span><span>Integrated rich reporting and Jenkins
+                                    pipelines for hands-free nightly validation.</span></li>
                         </ul>
                     </div>
                 </article>
@@ -1508,10 +1645,13 @@
                         <span>Patent Number · GMRITCRN026</span>
                         <span>Issuing Organization · Sanshadow</span>
                     </div>
-                    <p>Transforms visual eye-tracking cues into text or speech output, extending independence and accessibility for non-verbal users.</p>
+                    <p>Transforms visual eye-tracking cues into text or speech output, extending independence and
+                        accessibility for non-verbal users.</p>
                     <ul class="highlight-list" style="margin-top: 1.25rem;">
-                        <li><span class="highlight-icon"></span><span>Combines AI-powered detection with intuitive feedback loops for expressive communication.</span></li>
-                        <li><span class="highlight-icon"></span><span>Designed for affordable assistive deployment without compromising on response time.</span></li>
+                        <li><span class="highlight-icon"></span><span>Combines AI-powered detection with intuitive
+                                feedback loops for expressive communication.</span></li>
+                        <li><span class="highlight-icon"></span><span>Designed for affordable assistive deployment
+                                without compromising on response time.</span></li>
                     </ul>
                 </div>
             </article>
@@ -1536,9 +1676,11 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Your Message</label>
-                        <textarea id="message" name="message" placeholder="Tell me about your project or inquiry..." required></textarea>
+                        <textarea id="message" name="message" placeholder="Tell me about your project or inquiry..."
+                            required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">Send Message</button>
+                    <div class="form-status" aria-live="polite"></div>
                 </fieldset>
             </form>
         </section>
@@ -1554,6 +1696,7 @@
         <p style="font-size: 0.9rem; margin-top: 0.5rem;">Patent Holder | Full Stack Developer | AI Enthusiast</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
     <script>
         const header = document.querySelector('header');
         const body = document.body;
@@ -1619,12 +1762,65 @@
             closeMobileNav();
         });
 
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I\'ll get back to you soon.');
-            this.reset();
-        });
+        const contactForm = document.querySelector('.contact-form');
+        const formStatus = document.querySelector('.form-status');
+        const submitButton = document.querySelector('.submit-btn');
+        const EMAILJS_PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY';
+        const EMAILJS_SERVICE_ID = 'YOUR_EMAILJS_SERVICE_ID';
+        const EMAILJS_TEMPLATE_ID = 'YOUR_EMAILJS_TEMPLATE_ID';
+
+        function updateFormStatus(message, statusClass) {
+            if (!formStatus) return;
+            formStatus.textContent = message;
+            formStatus.classList.remove('is-sending', 'is-success', 'is-error');
+            if (statusClass) {
+                formStatus.classList.add(statusClass);
+            }
+        }
+
+        function toggleSubmitState(isDisabled) {
+            if (!submitButton) return;
+            submitButton.disabled = isDisabled;
+            submitButton.textContent = isDisabled ? 'Sending...' : 'Send Message';
+        }
+
+        function emailConfigIsValid() {
+            return ![
+                EMAILJS_PUBLIC_KEY,
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID
+            ].some(value => !value || value.startsWith('YOUR_EMAILJS_'));
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                if (typeof emailjs === 'undefined') {
+                    updateFormStatus('Email service failed to load. Please check your connection and try again.', 'is-error');
+                    return;
+                }
+
+                if (!emailConfigIsValid()) {
+                    updateFormStatus('Email service is not configured. Please add your EmailJS keys in the script.', 'is-error');
+                    return;
+                }
+
+                updateFormStatus('Sending your message...', 'is-sending');
+                toggleSubmitState(true);
+
+                try {
+                    await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm);
+                    updateFormStatus('Thanks! Your message was sent successfully.', 'is-success');
+                    contactForm.reset();
+                } catch (error) {
+                    console.error('EmailJS error:', error);
+                    updateFormStatus('Oops! Something went wrong. Please try again later.', 'is-error');
+                } finally {
+                    toggleSubmitState(false);
+                }
+            });
+        }
 
         function handleHeaderState() {
             if (window.scrollY > 100) {
@@ -1643,7 +1839,7 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -1652,7 +1848,13 @@
         }, observerOptions);
 
         // Observe all sections for animation
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof emailjs !== 'undefined' && emailConfigIsValid()) {
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+            } else if (formStatus && !emailConfigIsValid()) {
+                updateFormStatus('Configure EmailJS keys in the script to enable email delivery.', '');
+            }
+
             const sections = document.querySelectorAll('section');
             sections.forEach(section => {
                 section.classList.add('fade-in');
